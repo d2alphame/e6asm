@@ -39,11 +39,15 @@ my @keywords = qw(
 
 my @keywords_list;
 
+my $keyword_checker;
+open $keyword_checker, '>', "keyword_checker.asm";
+
+
 for(@keywords) {
 
     push @keywords_list, "keyword_$_: dd " . length . "\n" . qq(\t db "$_"); 
 
-    print << "END-KEYWORDS-CODE";
+    my $asm = << "END-KEYWORDS-CODE";
     check_$_:
         mov rdi, rsi
         mov rsi, keyword_$_
@@ -62,6 +66,7 @@ for(@keywords) {
 
 
 END-KEYWORDS-CODE
+    print $keyword_checker $asm;
 }
 
-say for(@keywords_list);
+say $keyword_checker $_ for(@keywords_list);
