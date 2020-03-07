@@ -8,15 +8,22 @@ use v5.26.1;
 
 # Add the keyword you want to recognize to this list
 my @keywords = qw(
-    mov
-    lodsb
-    repz
-    cmpsb
-    jnz
+    add
     clc
+    cmpsb
+    inc
+    jmp
+    jnz
+    lodsb
+    mov
+    pop
+    push
+    repnz
+    repz
     ret
-    xor
+    scasb
     stc
+    xor
     rax
     rbx
     rcx
