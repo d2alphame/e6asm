@@ -1,74 +1,6 @@
-    check_mov:
+    check_add:
         mov rdi, rsi
-        mov rsi, keyword_mov
-        lodsd
-        mov rcx, rax
-        repz cmpsb
-        jnz .not_found
-        mov rax, 0x01
-        clc
-        ret
-    
-        .not_found:
-            xor rax, rax
-            clc
-            ret
-
-
-    check_lodsb:
-        mov rdi, rsi
-        mov rsi, keyword_lodsb
-        lodsd
-        mov rcx, rax
-        repz cmpsb
-        jnz .not_found
-        mov rax, 0x01
-        clc
-        ret
-    
-        .not_found:
-            xor rax, rax
-            clc
-            ret
-
-
-    check_repz:
-        mov rdi, rsi
-        mov rsi, keyword_repz
-        lodsd
-        mov rcx, rax
-        repz cmpsb
-        jnz .not_found
-        mov rax, 0x01
-        clc
-        ret
-    
-        .not_found:
-            xor rax, rax
-            clc
-            ret
-
-
-    check_cmpsb:
-        mov rdi, rsi
-        mov rsi, keyword_cmpsb
-        lodsd
-        mov rcx, rax
-        repz cmpsb
-        jnz .not_found
-        mov rax, 0x01
-        clc
-        ret
-    
-        .not_found:
-            xor rax, rax
-            clc
-            ret
-
-
-    check_jnz:
-        mov rdi, rsi
-        mov rsi, keyword_jnz
+        mov rsi, keyword_add
         lodsd
         mov rcx, rax
         repz cmpsb
@@ -100,6 +32,176 @@
             ret
 
 
+    check_cmpsb:
+        mov rdi, rsi
+        mov rsi, keyword_cmpsb
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_inc:
+        mov rdi, rsi
+        mov rsi, keyword_inc
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_jmp:
+        mov rdi, rsi
+        mov rsi, keyword_jmp
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_jnz:
+        mov rdi, rsi
+        mov rsi, keyword_jnz
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_lodsb:
+        mov rdi, rsi
+        mov rsi, keyword_lodsb
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_mov:
+        mov rdi, rsi
+        mov rsi, keyword_mov
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_pop:
+        mov rdi, rsi
+        mov rsi, keyword_pop
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_push:
+        mov rdi, rsi
+        mov rsi, keyword_push
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_repnz:
+        mov rdi, rsi
+        mov rsi, keyword_repnz
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_repz:
+        mov rdi, rsi
+        mov rsi, keyword_repz
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
     check_ret:
         mov rdi, rsi
         mov rsi, keyword_ret
@@ -117,9 +219,9 @@
             ret
 
 
-    check_xor:
+    check_scasb:
         mov rdi, rsi
-        mov rsi, keyword_xor
+        mov rsi, keyword_scasb
         lodsd
         mov rcx, rax
         repz cmpsb
@@ -137,6 +239,23 @@
     check_stc:
         mov rdi, rsi
         mov rsi, keyword_stc
+        lodsd
+        mov rcx, rax
+        repz cmpsb
+        jnz .not_found
+        mov rax, 0x01
+        clc
+        ret
+    
+        .not_found:
+            xor rax, rax
+            clc
+            ret
+
+
+    check_xor:
+        mov rdi, rsi
+        mov rsi, keyword_xor
         lodsd
         mov rcx, rax
         repz cmpsb
@@ -457,24 +576,38 @@
             ret
 
 
-keyword_mov: dd 3
-	 db "mov"
-keyword_lodsb: dd 5
-	 db "lodsb"
-keyword_repz: dd 4
-	 db "repz"
-keyword_cmpsb: dd 5
-	 db "cmpsb"
-keyword_jnz: dd 3
-	 db "jnz"
+keyword_add: dd 3
+	 db "add"
 keyword_clc: dd 3
 	 db "clc"
+keyword_cmpsb: dd 5
+	 db "cmpsb"
+keyword_inc: dd 3
+	 db "inc"
+keyword_jmp: dd 3
+	 db "jmp"
+keyword_jnz: dd 3
+	 db "jnz"
+keyword_lodsb: dd 5
+	 db "lodsb"
+keyword_mov: dd 3
+	 db "mov"
+keyword_pop: dd 3
+	 db "pop"
+keyword_push: dd 4
+	 db "push"
+keyword_repnz: dd 5
+	 db "repnz"
+keyword_repz: dd 4
+	 db "repz"
 keyword_ret: dd 3
 	 db "ret"
-keyword_xor: dd 3
-	 db "xor"
+keyword_scasb: dd 5
+	 db "scasb"
 keyword_stc: dd 3
 	 db "stc"
+keyword_xor: dd 3
+	 db "xor"
 keyword_rax: dd 3
 	 db "rax"
 keyword_rbx: dd 3
