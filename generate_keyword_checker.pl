@@ -6,7 +6,8 @@ use v5.26.1;
 # The keyword_checker.asm file checks if a word pointed to by rsi is a keyword
 # that we recognize.
 
-# Add the keyword you want to recognize to this list
+# Add the keyword you want to recognize to this list. Note that the list is in
+# alphabetical order of type. i.e. instructions followed by registers
 my @keywords = qw(
     add
     clc
@@ -14,6 +15,7 @@ my @keywords = qw(
     inc
     jmp
     jnz
+    jz
     lodsb
     mov
     pop
@@ -76,4 +78,6 @@ END-KEYWORDS-CODE
     print $keyword_checker $asm;
 }
 
-say $keyword_checker $_ for(@keywords_list);
+# Print to the keyword definitions to the assembly file. We must remember to
+# align our data to 16-byte boundaries
+say $keyword_checker "align 16\n$_\n" for(@keywords_list);
