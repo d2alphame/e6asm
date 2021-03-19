@@ -16,9 +16,9 @@ scan_char:
 	push rdi
 	push rcx
 	
-	mov rcx, dword [rdi]			; Load the length of the string into rcx
-	add rdi, 4						; Move past the length of the string to the first character in the string
-	repnz scasb						; Scan for the character.
+	mov rcx, dword [rdi]							; Load the length of the string into rcx
+	add rdi, 4										; Move past the length of the string to the first character in the string
+	repnz scasb										; Scan for the character.
 	
 	; Restore the registers before returning
 	pop rcx
@@ -66,7 +66,14 @@ match:
 ; Characters found are founded as mismatch. String of characters to scan for should not be
 ; length-prefixed
 ;
-; 
+; IN:
+;	RDI Length-prefixed string against which to scan characters
+;	RSI String that contains characters to scan for
+;
+; OUT:
+;	RAX Number of matching characters
+;
+; EFFECT: None. All registers are preserved 
 unmatch:
 
 	; Preserve the following registers 
