@@ -95,3 +95,13 @@ unmatch:
 		pop rcx
 		pop rsi
 		ret
+
+
+; Checks if two strings are equal.
+;
+; IN:
+;	RDI first string
+;	RSI second string
+;
+; OUT:
+strequals:
